@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myrecipes/Screens/favourite.dart';
 import 'package:myrecipes/Screens/feature.dart';
+import 'package:myrecipes/Screens/edaman.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: TabBarView(
                       children: [
                         FeaturePage(),
-                        Text("Edaman API"),
+                        EdamanPage(),
                         FavouritePage(),                        // NewRecipe(),
                       ],
                     ),

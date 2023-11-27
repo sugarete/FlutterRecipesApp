@@ -30,19 +30,19 @@ class _IngredientsState extends State<Ingredients> {
             itemBuilder: (BuildContext context, int index) {
               return Row(
                 children: [
-                  // InkWell(
-                  //   onTap: () {
-                  //     setState(() {
-                  //       widget.recipeModel.takedingredients[index] =
-                  //           !widget.recipeModel.takedingredients[index];
-                  //     });
-                  //   },
-                  //   child: Icon(
-                  //     widget.recipeModel.takedingredients[index]
-                  //         ? Icons.task_alt
-                  //         : Icons.circle_outlined,
-                  //   ),
-                  // ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        widget.recipeModel.takedingredients[index] =
+                            !widget.recipeModel.takedingredients[index];
+                      });
+                    },
+                    child: Icon(
+                      widget.recipeModel.takedingredients[index]
+                          ? Icons.task_alt
+                          : Icons.circle_outlined,
+                    ),
+                  ),
                   const SizedBox(
                     width: 10,
                   ),

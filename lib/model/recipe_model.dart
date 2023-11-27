@@ -5,6 +5,7 @@ class RecipeModel {
   int servings;
   String imgPath;
   bool favourite;
+  List<bool> takedingredients;
   List<String> ingredients;
   List<String> preparation;
   List<String> cooking;
@@ -19,7 +20,7 @@ class RecipeModel {
     required this.ingredients,
     required this.preparation,
     required this.cooking,
-  });
+  }): takedingredients = List<bool>.filled(ingredients.length, false);
 
   static List<RecipeModel> iniRecipes = [
     RecipeModel(
