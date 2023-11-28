@@ -113,7 +113,7 @@ class _RecipeDetailState extends State<RecipeDetail> {
                     const SizedBox(
                       width: 5,
                     ),
-                    Text("kcal"),
+                    const Text("kcal"),
                     const SizedBox(
                       width: 10,
                     ),
