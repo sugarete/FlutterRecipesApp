@@ -219,7 +219,7 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
       body: SafeArea(
         child: SlidingUpPanel(
           minHeight: size.height / 2,
-          maxHeight: size.height / 1.2,
+          maxHeight: size.height / 1.15,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),
@@ -357,7 +357,9 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                           child: TabBarView(
                             children: [
                               EdamamIngredients(edamamrecipeModel: widget.recipeModel),
-                              Text("Coming Soon"),
+                              EdamamCooking(
+                                edamamrecipeModel: widget.recipeModel,
+                              )
                             ],
                           ),
                         ),

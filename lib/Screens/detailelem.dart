@@ -1,10 +1,13 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipes/model/recipe_model.dart';
 import 'package:myrecipes/model/edamam_model.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class Ingredients extends StatefulWidget {
   final RecipeModel recipeModel;
-  const Ingredients({ required this.recipeModel, super.key});
+  const Ingredients({required this.recipeModel, super.key});
 
   @override
   State<Ingredients> createState() => _IngredientsState();
@@ -236,6 +239,45 @@ class _EdamamIngredientsState extends State<EdamamIngredients> {
             },
           ),
         ],
+      ),
+    );
+  }
+}
+
+class EdamamCooking extends StatefulWidget {
+  final EdamamRecipeModel edamamrecipeModel;
+  const EdamamCooking({required this.edamamrecipeModel, super.key});
+
+  @override
+  State<EdamamCooking> createState() => _EdamamCookingState();
+}
+
+class _EdamamCookingState extends State<EdamamCooking> {
+  @override
+  void initState() {
+    if (widget.edamamrecipeModel.url.contains('http://')) {
+      widget.edamamrecipeModel.url =
+          widget.edamamrecipeModel.url.replaceFirst('http://', 'https://');
+    }
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: InAppWebView(
+        gestureRecognizers: {
+          Factory<VerticalDragGestureRecognizer>(
+              () => VerticalDragGestureRecognizer())
+        },
+        initialUrlRequest: URLRequest(
+          url: Uri.parse(widget.edamamrecipeModel.url),
+        ),
+        initialOptions: InAppWebViewGroupOptions(
+          crossPlatform: InAppWebViewOptions(),
+        ),
+        onWebViewCreated: (InAppWebViewController controller) {},
       ),
     );
   }
