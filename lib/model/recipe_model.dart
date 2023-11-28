@@ -272,7 +272,7 @@ class RecipeModel {
         title: 'Trứng Lòng Đào',
         favourite: false,
         cookingTime: 20,
-        servings: 1 - 2,
+        servings: 2,
         imgPath:
             'https://cdn.shortpixel.ai/spai/q_lossless+ret_img+to_auto/www.thatlangon.com/wp-content/uploads/2021/04/tldtln-e1618902254982-medium.jpg',
         ingredients: [

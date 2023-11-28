@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myrecipes/model/recipe_model.dart';
+import 'package:myrecipes/model/edamam_model.dart';
 
 class Ingredients extends StatefulWidget {
   final RecipeModel recipeModel;
-  const Ingredients({required this.recipeModel, super.key});
+  const Ingredients({ required this.recipeModel, super.key});
 
   @override
   State<Ingredients> createState() => _IngredientsState();
@@ -168,6 +169,67 @@ class _CookingState extends State<Cooking> {
                               softWrap: true,
                             );
                           })(),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class EdamamIngredients extends StatefulWidget {
+  final EdamamRecipeModel edamamrecipeModel;
+  const EdamamIngredients({required this.edamamrecipeModel, super.key});
+
+  @override
+  State<EdamamIngredients> createState() => _EdamamIngredientsState();
+}
+
+class _EdamamIngredientsState extends State<EdamamIngredients> {
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(
+            height: 20,
+          ),
+          ListView.separated(
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: widget.edamamrecipeModel.ingredients.length,
+            separatorBuilder: (BuildContext context, int index) {
+              return Divider(
+                color: Colors.black.withOpacity(0.3),
+              );
+            },
+            itemBuilder: (BuildContext context, int index) {
+              return Row(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        widget.edamamrecipeModel.takedingredients[index] =
+                            !widget.edamamrecipeModel.takedingredients[index];
+                      });
+                    },
+                    child: Icon(
+                      widget.edamamrecipeModel.takedingredients[index]
+                          ? Icons.task_alt
+                          : Icons.circle_outlined,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Text(
+                      widget.edamamrecipeModel.ingredients[index],
+                      style: const TextStyle(fontSize: 14),
+                    ),
                   ),
                 ],
               );

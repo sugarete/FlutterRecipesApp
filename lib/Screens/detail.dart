@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:http/http.dart';
 import 'package:myrecipes/model/recipe_model.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:myrecipes/Screens/detailelem.dart';
@@ -292,7 +291,7 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                     const SizedBox(
                       width: 5,
                     ),
-                    Text("kcal"),
+                    Text(widget.recipeModel.kcal.toString()),
                     const SizedBox(
                       width: 10,
                     ),
@@ -300,7 +299,7 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                     const SizedBox(
                       width: 5,
                     ),
-                    // Text('${widget.recipeModel.cookingTime}\''),
+                    Text(widget.recipeModel.cookingTime.toString()),
                     const SizedBox(
                       width: 25,
                     ),
@@ -316,7 +315,7 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                     const SizedBox(
                       width: 5,
                     ),
-                    // Text("${widget.recipeModel.servings} Servings"),
+                    Text("${widget.recipeModel.servings} Servings"),
                   ],
                 ),
                 const SizedBox(
@@ -327,7 +326,7 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                 ),
                 Expanded(
                   child: DefaultTabController(
-                    length: 3,
+                    length: 2,
                     initialIndex: 0,
                     child: Column(
                       children: [
@@ -350,21 +349,15 @@ class _EdamamRecipeDetailState extends State<EdamamRecipeDetail> {
                               text: "Ingredients".toUpperCase(),
                             ),
                             Tab(
-                              text: "Preparation".toUpperCase(),
+                              text: "Cook".toUpperCase(),
                             ),
-                            Tab(
-                              text: "Cooking".toUpperCase(),
-                            )
                           ],
                         ),
                         Expanded(
                           child: TabBarView(
                             children: [
-                              // Ingredients(recipeModel: widget.recipeModel),
-                              // Preparation(recipeModel: widget.recipeModel),
-                              // Cooking(
-                              //   recipeModel: widget.recipeModel,
-                              // )
+                              EdamamIngredients(edamamrecipeModel: widget.recipeModel),
+                              Text("Coming Soon"),
                             ],
                           ),
                         ),
